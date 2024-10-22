@@ -2,7 +2,8 @@
 
 namespace App\Livewire\Projects;
 
-use App\Models\Projects;
+use App\Models\Project;
+use Livewire\Attributes\Computed;
 use Livewire\Component;
 
 class Index extends Component
@@ -12,7 +13,9 @@ class Index extends Component
         return view('livewire.projects.index');
     }
 
-    public function projects(){
-        return Projects::query()->inRandomOrder()->get();
+    #[Computed()]
+    public function projects()
+    {
+        return Project::query()->inRandomOrder()->get();
     }
 }
